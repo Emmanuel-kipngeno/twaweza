@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Processing...</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#1a237e,#0d1642);
+font-family:Arial;
+color:white;
+flex-direction:column;
+}
+
+.loader{
+width:70px;
+height:70px;
+border:6px solid rgba(255,255,255,0.2);
+border-top:6px solid #ffa726;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin-bottom:20px;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+h2{
+font-weight:600;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="loader"></div>
+
+<h2>Inachakata taarifa zako...</h2>
+
+</body>
+</html>
